@@ -1,24 +1,26 @@
 import "./Hero.css";
 import { motion, useReducedMotion } from 'framer-motion';
 import { containerStagger, fadeUp } from '../animations/variants';
+import { useTranslation } from 'react-i18next';
 
 export function Hero() {
     const reduce = useReducedMotion();
+    const { t } = useTranslation();
 
     return (
         <section id="hero" className="hero minimal">
             <motion.div className="hero-inner container" variants={containerStagger} initial="hidden" animate="visible">
                 <motion.div className="hero-left" variants={fadeUp}>
                     <h1 className="hero-title">
-                        Welcome, I'm <span className="accent">Vicente</span>
+                        {t('hero.welcome', { name: 'Vicente' })}
                     </h1>
                     <motion.p className="hero-sub" variants={fadeUp}>
-                        EInformatics Engineering Student
+                        {t('hero.subtitle')}
                     </motion.p>
 
                     <motion.div className="hero-buttons" variants={fadeUp}>
-                        <a href="#projects" className="btn btn-primary">Ver Projetos</a>
-                        <a href="#contact" className="btn btn-ghost">Contacto</a>
+                        <a href="#projects" className="btn btn-primary">{t('hero.projects_cta')}</a>
+                        <a href="#contact" className="btn btn-ghost">{t('hero.contact_cta')}</a>
                     </motion.div>
                 </motion.div>
 
@@ -86,14 +88,14 @@ export function Hero() {
             <motion.a
                 href="#about"
                 className="scroll-indicator"
-                aria-label="Scroll down"
+                aria-label={t('hero.scroll')}
                 animate={reduce ? undefined : { y: [0, 10, 0] }}
                 transition={reduce ? undefined : { duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
             >
                 <svg className="chev" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span className="sr-only">Descer</span>
+                <span className="sr-only">{t('hero.scroll')}</span>
             </motion.a>
         </section>
     );

@@ -2,10 +2,12 @@ import "./About.css";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { fadeUp } from "../animations/variants";
+import { useTranslation } from 'react-i18next';
 
 export function About() {
     const ref = useRef<HTMLElement | null>(null);
     const [visible, setVisible] = useState(false);
+    const { t } = useTranslation();
 
     useEffect(() => {
         const el = ref.current;
@@ -46,7 +48,7 @@ export function About() {
                             initial="hidden"
                             animate={visible ? "visible" : "hidden"}
                         >
-                            Sobre Mim
+                            {t('about.title')}
                         </motion.h2>
                         {/* decorative underline (stroke-draw) */}
                         <motion.p
@@ -54,12 +56,7 @@ export function About() {
                             initial="hidden"
                             animate={visible ? "visible" : "hidden"}
                         >
-                            Sou o Vicente, estudante de Engenharia Informática no ISEP,
-                            com experiência em backend, APIs REST e sistemas de
-                            simulação em tempo real. Trabalho com Java, .NET, C,
-                            TypeScript, Angular e React. Tenho interesse em redes,
-                            cibersegurança e em desafios que envolvem desempenho,
-                            fiabilidade e resolução de problemas.
+                            {t('about.text')}
                         </motion.p>
                     </div>
 

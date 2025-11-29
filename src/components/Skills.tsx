@@ -1,6 +1,7 @@
 import "./Skills.css";
 import { motion } from 'framer-motion';
 import { containerStagger, fadeUp } from '../animations/variants';
+import { useTranslation } from 'react-i18next';
 
 type Skill = {
     name: string;
@@ -52,14 +53,16 @@ const Section = ({ title, items }: SectionProps) => (
 );
 
 export function Skills() {
+    const { t } = useTranslation();
+
     return (
         <section id="skills" className="skills">
-            <motion.h2 variants={fadeUp} initial="hidden" animate="visible">Skills</motion.h2>
-            <motion.p className="skills-subtitle" variants={fadeUp} initial="hidden" animate="visible">Competências técnicas e ferramentas que utilizo.</motion.p>
+            <motion.h2 variants={fadeUp} initial="hidden" animate="visible">{t('skills.title')}</motion.h2>
+            <motion.p className="skills-subtitle" variants={fadeUp} initial="hidden" animate="visible">{t('skills.subtitle')}</motion.p>
 
-            <Section title="Languages" items={languages} />
-            <Section title="Frameworks" items={frameworks} />
-            <Section title="Tools & Methodologies" items={tools} />
+            <Section title={t('skills.languages')} items={languages} />
+            <Section title={t('skills.frameworks')} items={frameworks} />
+            <Section title={t('skills.tools')} items={tools} />
         </section>
     );
 }

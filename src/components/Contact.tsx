@@ -1,33 +1,36 @@
 import "./Contact.css";
 import { motion } from 'framer-motion';
 import { containerStagger, fadeUp } from '../animations/variants';
+import { useTranslation } from 'react-i18next';
 
 export function Contact() {
+    const { t } = useTranslation();
+
     return (
         <section id="contact" className="contact">
             <div className="contact-inner container">
                 <motion.div className="contact-header" variants={fadeUp} initial="hidden" animate="visible">
-                    <h2>Contact</h2>
-                    <p className="contact-subtitle">Se quiseres falar, envia um email ou adiciona-me no LinkedIn. Também podes usar o formulário rápido.</p>
+                    <h2>{t('contact.title')}</h2>
+                    <p className="contact-subtitle">{t('contact.subtitle')}</p>
                 </motion.div>
 
                 <motion.div className="contact-grid" variants={containerStagger} initial="hidden" animate="visible">
                     <motion.div className="contact-card" variants={fadeUp}>
-                        <h3>Email</h3>
-                        <p className="small">Prefiro receber mensagens por email — responderei o mais rápido possível.</p>
-                        <p className="small">vicente.martins@outlook.pt</p>
+                        <h3>{t('contact.email_title')}</h3>
+                        <p className="small">{t('contact.email_text')}</p>
+                        <p className="small">{t('contact.email_address')}</p>
                     </motion.div>
 
                     <motion.div className="contact-card" variants={fadeUp}>
-                        <h3>LinkedIn</h3>
-                        <p className="small">Conecta no LinkedIn para oportunidades e networking.</p>
-                        <a className="contact-btn" href="https://www.linkedin.com/in/vicentemartins28" target="_blank" rel="noreferrer">Ver Perfil</a>
+                        <h3>{t('contact.linkedin_title')}</h3>
+                        <p className="small">{t('contact.linkedin_text')}</p>
+                        <a className="contact-btn" href="https://www.linkedin.com/in/vicentemartins28" target="_blank" rel="noreferrer">{t('contact.linkedin_btn')}</a>
                     </motion.div>
 
                     <motion.div className="contact-card" variants={fadeUp}>
-                        <h3>GitHub</h3>
-                        <p className="small">Verifica a minha conta no GitHub para verificares os meus projetos.</p>
-                        <a className="contact-btn" href="https://github.com/vicentemartins2804" target="_blank" rel="noreferrer">Ver Perfil</a>
+                        <h3>{t('contact.github_title')}</h3>
+                        <p className="small">{t('contact.github_text')}</p>
+                        <a className="contact-btn" href="https://github.com/vicentemartins2804" target="_blank" rel="noreferrer">{t('contact.github_btn')}</a>
                     </motion.div>
                 </motion.div>
             </div>

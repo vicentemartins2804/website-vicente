@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { SmoothScroll } from './components/SmoothScroll'
+import './i18n'
 
 // Prevent double-tap to zoom on iOS: small handler
 if (typeof window !== 'undefined' && 'ontouchstart' in window) {

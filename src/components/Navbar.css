@@ -21,7 +21,7 @@
     position: relative;
 }
 
-.nav-logo { position: absolute; left: 0; font-weight: 700; font-size: 1rem; color: var(--text); }
+.nav-logo { position: absolute; left: 20px; font-weight: 700; font-size: 1rem; color: var(--text); }
 
 /* LINKS DESKTOP */
 .nav-links {
@@ -90,6 +90,89 @@
 
 .hamburger.open span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
+}
+
+/* LANGUAGE SWITCHER (aligned to right of nav-center, symmetric to logo) */
+.nav-lang {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    z-index: 10;
+}
+
+/* fallback / small screens: keep it on the right with padding to avoid overlap */
+@media (max-width: 850px) {
+    .nav-lang {
+        right: 12px;
+        top: 12px;
+        transform: none;
+    }
+    .nav-logo { left: 12px; }
+}
+
+.nav-lang button {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.9);
+    padding: 6px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+
+}
+
+.nav-lang button.active {
+    background: transparent; /* visual handled by .indicator */
+    color: var(--bg);
+    border-color: transparent;
+}
+
+/* focus state for keyboard users */
+.lang-toggle .lang-btn:focus-visible,
+.nav-lang button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(34, 100, 160, 0.18);
+    border-radius: 8px;
+}
+
+/* reduce hover movement to subtle */
+.lang-toggle .lang-btn:hover { transform: translateY(-1px); }
+
+/* remove indicator rules */
+.lang-toggle .indicator { display: none; }
+
+/* style simplified language buttons */
+.lang-toggle .lang-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.85);
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    z-index: 2;
+    transition: background 160ms ease, color 160ms ease, transform 120ms ease;
+}
+
+.lang-toggle .lang-btn:not(.active):hover {
+    transform: translateY(-1px);
+    color: rgba(255,255,255,0.95);
+}
+
+.lang-toggle .lang-btn.active {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+/* make sure the pill shrinks on small screens */
+@media (max-width: 560px) {
+    .lang-toggle { gap: 4px; padding: 3px; }
+    .lang-toggle .lang-btn { padding: 5px 8px; font-size: 0.78rem; }
+    .lang-toggle .indicator { width: 46%; }
 }
 
 /* MOBILE */

@@ -1,17 +1,20 @@
 import "./Footer.css";
 import { motion } from 'framer-motion';
 import { fadeIn } from '../animations/variants';
+import { useTranslation } from 'react-i18next';
 
 export function Footer() {
+    const { t } = useTranslation();
+
     return (
         <motion.footer className="footer" id="footer" variants={fadeIn} initial="hidden" animate="visible">
             <div className="footer-container">
 
                 <nav className="footer-links">
-                    <a href="#hero">Home</a>
-                    <a href="#about">Sobre</a>
-                    <a href="#projects">Projetos</a>
-                    <a href="#contact">Contacto</a>
+                    <a href="#hero">{t('footer.home')}</a>
+                    <a href="#about">{t('footer.about')}</a>
+                    <a href="#projects">{t('footer.projects')}</a>
+                    <a href="#contact">{t('footer.contact')}</a>
                 </nav>
 
                 <div className="footer-socials">
@@ -25,7 +28,7 @@ export function Footer() {
             </div>
 
             <p className="footer-copy">
-                © {new Date().getFullYear()} Vicente — Todos os direitos reservados.
+                {t('footer.copy', { year: new Date().getFullYear() })}
             </p>
         </motion.footer>
     );
