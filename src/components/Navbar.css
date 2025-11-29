@@ -92,93 +92,46 @@
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* LANGUAGE SWITCHER (aligned to right of nav-center, symmetric to logo) */
-.nav-lang {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    gap: 6px;
-    align-items: center;
-    z-index: 10;
-}
-
-/* fallback / small screens: keep it on the right with padding to avoid overlap */
-@media (max-width: 850px) {
-    .nav-lang {
-        right: 12px;
-        top: 12px;
-        transform: none;
-    }
-    .nav-logo { left: 12px; }
-}
-
-.nav-lang button {
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.9);
-    padding: 6px 8px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-
-}
-
-.nav-lang button.active {
-    background: transparent; /* visual handled by .indicator */
-    color: var(--bg);
-    border-color: transparent;
-}
-
-/* focus state for keyboard users */
-.lang-toggle .lang-btn:focus-visible,
-.nav-lang button:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(34, 100, 160, 0.18);
-    border-radius: 8px;
-}
-
-/* reduce hover movement to subtle */
-.lang-toggle .lang-btn:hover { transform: translateY(-1px); }
-
-/* remove indicator rules */
-.lang-toggle .indicator { display: none; }
-
-/* style simplified language buttons */
-.lang-toggle .lang-btn {
-    background: transparent;
-    border: none;
-    color: rgba(255,255,255,0.85);
-    padding: 6px 10px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    z-index: 2;
-    transition: background 160ms ease, color 160ms ease, transform 120ms ease;
-}
-
-.lang-toggle .lang-btn:not(.active):hover {
-    transform: translateY(-1px);
-    color: rgba(255,255,255,0.95);
-}
-
-.lang-toggle .lang-btn.active {
-    background: var(--accent);
-    color: var(--bg);
-}
-
-/* make sure the pill shrinks on small screens */
-@media (max-width: 560px) {
-    .lang-toggle { gap: 4px; padding: 3px; }
-    .lang-toggle .lang-btn { padding: 5px 8px; font-size: 0.78rem; }
-    .lang-toggle .indicator { width: 46%; }
-}
-
 /* MOBILE */
 @media (max-width: 850px) {
     .nav-center { width: 100%; padding: 0 12px; }
-    .nav-links { display: none; }
-    .nav-logo { left: 12px; }
-    .hamburger { position: absolute; right: 12px; }
+    .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: rgba(10,12,16,0.96); padding: 12px; flex-direction: column; gap: 8px; align-items: center; border-top: 1px solid rgba(255,255,255,0.03); }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 12px 16px; width: 100%; text-align: center; }
+    .hamburger { display: flex; position: absolute; right: 12px; }
+}
+
+/* Desktop language selector: visible only on screens wider than 850px */
+.nav-lang { display: flex; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); gap: 6px; align-items: center; z-index: 10; }
+.nav-lang .lang-btn { padding: 6px 8px; border-radius: 8px; font-weight: 700; border: 1px solid rgba(255,255,255,0.08); background: transparent; color: rgba(255,255,255,0.9); }
+.nav-lang .lang-btn.active { background: var(--accent); color: var(--bg); border-color: transparent; }
+
+@media (max-width: 850px) {
+    .nav-lang { display: none; }
+}
+
+/* Mobile language selector appears only in dropdown (<=850px) */
+.nav-lang-mobile { display: none; }
+@media (max-width: 850px) {
+    .nav-lang-mobile { display: flex; gap: 10px; margin-top: 12px; justify-content: center; }
+    .nav-lang-mobile .lang-btn {
+        padding: 10px 14px;
+        border-radius: 10px;
+        font-weight: 700;
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.06);
+        color: rgba(255,255,255,0.95);
+        min-width: 96px;
+    }
+
+    .nav-lang-mobile .lang-btn.active {
+        background: var(--accent);
+        color: var(--bg);
+        border-color: transparent;
+    }
+}
+
+/* increase touch target on small devices for language buttons */
+@media (max-width: 560px) {
+    .lang-toggle .lang-btn { padding: 10px 12px; }
 }

@@ -26,12 +26,32 @@ export function Navbar() {
                     <motion.a href="#skills" onClick={() => setOpen(false)} whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>{t('nav.skills')}</motion.a>
                     <motion.a href="#projects" onClick={() => setOpen(false)} whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>{t('nav.projects')}</motion.a>
                     <motion.a href="#contact" onClick={() => setOpen(false)} whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>{t('nav.contact')}</motion.a>
+
+                    {/* mobile-only language selector */}
+                    <div className="nav-lang-mobile" role="group" aria-label="Language selector mobile">
+                        <button
+                            aria-pressed={current === 'en'}
+                            onClick={() => changeLang('en')}
+                            className={`lang-btn ${current === 'en' ? 'active' : ''}`}
+                            title="English"
+                        >
+                            EN
+                        </button>
+
+                        <button
+                            aria-pressed={current === 'pt'}
+                            onClick={() => changeLang('pt')}
+                            className={`lang-btn ${current === 'pt' ? 'active' : ''}`}
+                            title="Português"
+                        >
+                            PT
+                        </button>
+                    </div>
                 </nav>
 
-                {/* move language switcher inside nav-center so it's positioned relative to the same container as .nav-logo */}
-                <div className="nav-lang">
-                    {/* prettier language switch: pill with sliding indicator */}
-                    <div className="lang-toggle" role="tablist" aria-label="Language selector">
+                {/* desktop language picker (visible on PC) */}
+                <div className="nav-lang" aria-label="Language selector">
+                    <div className="lang-toggle">
                         <button
                             role="tab"
                             aria-selected={current === 'en'}
@@ -39,7 +59,7 @@ export function Navbar() {
                             className={`lang-btn ${current === 'en' ? 'active' : ''}`}
                             title="English"
                         >
-                            <span className="code">EN</span>
+                            EN
                         </button>
 
                         <button
@@ -49,11 +69,11 @@ export function Navbar() {
                             className={`lang-btn ${current === 'pt' ? 'active' : ''}`}
                             title="Português"
                         >
-                            <span className="code">PT</span>
+                            PT
                         </button>
-
                     </div>
                 </div>
+
             </div>
 
             <div
