@@ -1,0 +1,111 @@
+/* Root variables and base styles for the portfolio */
+:root {
+  --bg: #07080b;
+  --panel: #0a0c10;
+  --muted: #9aa6ae;
+  --text: #e6eef8;
+  --accent: #4f8cff; /* voltar para azul */
+  --accent-2: #61dafb;
+  --radius: 12px;
+  --container: 1100px;
+  --transition: 220ms;
+}
+
+/* Remover limites e padding do container principal */
+#root {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+/* Remover estilos do Vite */
+.logo,
+.logo:hover,
+.logo.react:hover {
+    all: unset;
+}
+
+.card {
+    all: unset;
+}
+
+.read-the-docs {
+    display: none;
+}
+
+/* Remover animação padrão */
+@keyframes logo-spin {
+    from { transform: none; }
+    to { transform: none; }
+}
+
+/* Reset global opcional — deixa o site com estilo normal de browser */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Performance helpers: prefer animating transform & opacity */
+* { will-change: transform, opacity; }
+
+html, body, #root {
+  height: 100%;
+  touch-action: manipulation; /* improves scrolling and prevents some pinch/zoom behaviors */
+  -ms-touch-action: manipulation;
+  -webkit-text-size-adjust: 100%; /* avoid automatic text size changes on iOS */
+}
+
+body {
+  /* apply same subtle radial gradient from Hero on top of the base background */
+  background: radial-gradient(1200px 600px at 50% 30%, rgba(79,140,255,0.04), transparent 30%), var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* enable native smooth scrolling as fallback; JS also handles header offset */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Layout container used across the app */
+.app-container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 28px;
+}
+
+/* Headings */
+h1, h2, h3 { font-family: Poppins, Inter, sans-serif; color: var(--text); }
+
+h1 { font-size: 2.8rem; line-height: 1.05; }
+h2 { font-size: 2rem; }
+
+/* Buttons base */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.btn-primary { background: linear-gradient(90deg,var(--accent), #3a6ecf); color: white; }
+.btn-ghost { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.06); }
+
+/* Utility spacing */
+.section { padding: 64px 16px; }
+.small { font-size: 0.9rem; color: var(--muted); }
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .reduced-motion, .reduced-motion * { animation: none !important; transition: none !important; }
+}

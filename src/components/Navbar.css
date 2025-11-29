@@ -1,0 +1,101 @@
+/* NAVBAR BASE */
+.navbar {
+    position: fixed;
+    top: 18px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center; /* center the nav-center */
+    align-items: center;
+    z-index: 60;
+    padding: 6px 12px;
+    background: transparent;
+}
+
+.nav-center {
+    width: min(100%, var(--container));
+    display: flex;
+    align-items: center;
+    justify-content: center; /* center logo + links together */
+    gap: 24px;
+    position: relative;
+}
+
+.nav-logo { position: absolute; left: 0; font-weight: 700; font-size: 1rem; color: var(--text); }
+
+/* LINKS DESKTOP */
+.nav-links {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: -6px;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition) ease;
+    opacity: 0.0;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+    background: rgba(255,255,255,0.02);
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+/* HAMBURGER MENU */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: var(--text);
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+/* ANIMAÇÃO DO HAMBURGER */
+.hamburger.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* MOBILE */
+@media (max-width: 850px) {
+    .nav-center { width: 100%; padding: 0 12px; }
+    .nav-links { display: none; }
+    .nav-logo { left: 12px; }
+    .hamburger { position: absolute; right: 12px; }
+}

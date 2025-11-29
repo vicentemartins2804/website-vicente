@@ -1,0 +1,212 @@
+.projects {
+    padding: 64px 28px;
+    background: transparent;
+    color: var(--text);
+    text-align: center;
+
+    /* center content and constrain width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.projects h2 {
+    font-size: 2.4rem;
+    color: var(--accent);
+    margin-bottom: 12px;
+
+    /* subtle entrance */
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 520ms cubic-bezier(.2,.9,.3,1) forwards;
+}
+
+.projects-subtitle {
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin-bottom: 40px;
+
+    opacity: 0;
+    transform: translateY(8px);
+    animation: fadeInUp 520ms cubic-bezier(.2,.9,.3,1) forwards;
+    animation-delay: 120ms;
+}
+
+/* grid layout for cards */
+.projects-grid {
+    display: grid;
+    gap: 28px;
+    /* use fixed column width so single item doesn't stretch; center the whole grid */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+    justify-content: center;
+    width: auto;
+    opacity: 0;
+    transform: translateY(6px);
+    animation: fadeInUp 520ms cubic-bezier(.2,.9,.3,1) forwards;
+    animation-delay: 220ms;
+}
+
+.project-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));
+    border-radius: var(--radius);
+    padding: 18px;
+    text-align: left;
+    transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background 420ms ease;
+    border: 1px solid rgba(255,255,255,0.03);
+
+    /* ensure consistent card width inside the fixed-size grid column */
+    max-width: 320px;
+    width: 100%;
+
+    /* starting state for entrance animation */
+    opacity: 0;
+    transform: translateY(18px) scale(.995);
+    animation: cardIn 640ms cubic-bezier(.2,.9,.3,1) forwards;
+}
+
+/* Staggered delays for up to 8 items */
+.project-card:nth-child(1) { animation-delay: 320ms; }
+.project-card:nth-child(2) { animation-delay: 440ms; }
+.project-card:nth-child(3) { animation-delay: 560ms; }
+.project-card:nth-child(4) { animation-delay: 680ms; }
+.project-card:nth-child(5) { animation-delay: 800ms; }
+.project-card:nth-child(6) { animation-delay: 920ms; }
+.project-card:nth-child(7) { animation-delay: 1040ms; }
+.project-card:nth-child(8) { animation-delay: 1160ms; }
+
+.project-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 22px 48px rgba(0,0,0,0.6);
+    border-color: rgba(79,140,255,0.28);
+    background: linear-gradient(180deg, rgba(79,140,255,0.03), rgba(0,0,0,0.02));
+}
+
+.project-image {
+    height: 160px;
+    background: center/cover no-repeat;
+    border-radius: 10px;
+    margin-bottom: 16px;
+
+    /* gentle shimmer to make images feel alive */
+    position: relative;
+    overflow: hidden;
+}
+
+/* faux image shimmer */
+.project-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0) 100%);
+    transform: translateX(-120%);
+    animation: shimmer 2.2s linear infinite;
+    pointer-events: none;
+}
+
+.project-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.project-card p {
+    color: var(--muted);
+    margin: 8px 0 16px;
+}
+
+.project-meta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.badge {
+    background: rgba(79,140,255,0.12);
+    color: var(--accent);
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.project-btn {
+    padding: 10px 16px;
+    display: inline-block;
+    background: linear-gradient(90deg,var(--accent), #3a6ecf);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.project-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(58,110,207,0.18);
+}
+
+/* Center project cards for the Skills section specifically */
+.projects#skills .projects-grid .project-card {
+    text-align: center;
+}
+
+/* Contact section fine-tune */
+.projects#contact {
+    padding-top: 72px;
+    padding-bottom: 72px;
+}
+
+/* small responsive tweaks */
+@media (max-width: 900px) {
+    .projects { padding: 52px 18px; }
+}
+
+@media (max-width: 500px) {
+    .project-card { padding: 14px; }
+    .projects h2 { font-size: 1.8rem; }
+}
+
+/* ---- Animations ---- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cardIn {
+    0% { opacity: 0; transform: translateY(18px) scale(.995); }
+    60% { opacity: 1; transform: translateY(-6px) scale(1.002); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-120%); }
+    100% { transform: translateX(120%); }
+}
+
+/* subtle pulse on important badges */
+.badge {
+    animation: pulse 2200ms ease-in-out infinite;
+    opacity: 0.98;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* small accessibility helper: reduce animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .projects h2,
+    .projects-subtitle,
+    .projects-grid,
+    .project-card,
+    .project-image::after,
+    .badge {
+        animation: none !important;
+        transition: none !important;
+    }
+}
