@@ -54,8 +54,14 @@
 
 .contact-actions { display: flex; justify-content: flex-end; }
 
+@media (max-width: 1024px) {
+  .contact { text-align: center; padding: 48px 16px; }
+  .contact-grid { justify-items: center; }
+  .contact-card { margin: 0 auto; text-align: center; }
+  .contact-actions { justify-content: center; }
+}
+
 @media (max-width: 720px) {
   .contact-card { text-align: center; }
   .contact-actions { justify-content: center; }
 }
-

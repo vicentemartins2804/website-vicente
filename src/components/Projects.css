@@ -169,6 +169,13 @@
     .projects h2 { font-size: 1.8rem; }
 }
 
+@media (max-width: 1024px) {
+    .projects { padding: 48px 18px; }
+    .projects h2 { text-align: center; }
+    .projects-grid { justify-content: center; grid-template-columns: repeat(auto-fit, minmax(220px, 320px)); }
+    .project-card { max-width: 300px; margin: 0 auto; }
+}
+
 /* ---- Animations ---- */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(10px); }

@@ -99,6 +99,15 @@
     .nav-links.open { display: flex; }
     .nav-links a { padding: 12px 16px; width: 100%; text-align: center; }
     .hamburger { display: flex; position: absolute; right: 12px; }
+
+    /* center the dropdown content and constrain width on tablets/iphones */
+    .nav-links {
+        max-width: 720px;
+        margin: 0 auto;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+        padding: 20px 18px;
+    }
 }
 
 /* Desktop language selector: visible only on screens wider than 850px */
@@ -128,6 +137,15 @@
         background: var(--accent);
         color: var(--bg);
         border-color: transparent;
+    }
+}
+
+/* iPad specific: make mobile-language buttons slightly smaller on tablet widths */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .nav-lang-mobile .lang-btn {
+        padding: 8px 12px;
+        min-width: 78px;
+        font-size: 0.88rem;
     }
 }
 

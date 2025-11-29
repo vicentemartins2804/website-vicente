@@ -74,3 +74,10 @@
         justify-content: center;
     }
 }
+
+@media (max-width: 1024px) {
+    .footer { padding: 36px 20px; }
+    .footer-container { flex-direction: column; gap: 18px; }
+    .footer-links { gap: 16px; }
+    .footer-copy { margin-top: 28px; }
+}

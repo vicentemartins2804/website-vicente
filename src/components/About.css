@@ -198,3 +198,20 @@
         margin: 0 auto;
     }
 }
+
+@media (max-width: 1024px) {
+    .about-inner { text-align: center; }
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .about-content h2 { text-align: center; }
+    .about-content p { margin-left: auto; margin-right: auto; }
+    .about-portrait {
+        margin: 0 auto;
+        margin-top: 0;
+        margin-left: 0;
+        transform: none;
+        width: 220px;
+    }
+}
